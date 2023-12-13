@@ -8,13 +8,18 @@ const MealItemForm = (props) => {
   const amountInputRef = useRef(); 
   
   const submitHandler = (event) => {
-    event.prevent.default();
+    event.preventDefault();
 
     //  the value is always a string no matter what
     const enteredAmount = amountInputRef.current.value ;
     const enteredAmountNumber = +enteredAmount;
 
-    if (enteredAmount.trim().length === 0 || enteredAmountNumber < 1 || enteredAmountNumber > 5 ) {
+    //trim = to remove any white space
+    if (
+      enteredAmount.trim().length === 0 || 
+      enteredAmountNumber < 1 ||
+       enteredAmountNumber > 5 
+       ) {
       setAmountIsValid(false)
        return;
     }
