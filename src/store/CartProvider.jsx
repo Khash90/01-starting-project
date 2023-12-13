@@ -8,9 +8,15 @@ const defaultCartState = {
   totalAmount: 0
 }
 
+// the action is dispatched by you later in your code
+// the state is simply the last  state snapshot of the state managed by the reducer.
+// concat adds a new item to an array but unlike push, it doesnt edit the existing array, but return a new array.
+
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
-    const updatedItems = state.items.concat(action.item); //return a new array
+    const updatedItems = state.items.concat(action.item); //return a new array 
+
+    //total amount that needs to be changed.
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
     return {
       items: updatedItems,

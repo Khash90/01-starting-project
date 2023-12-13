@@ -10,6 +10,8 @@ const Backdrop = (props) => {
 const ModalOverLay = (props) => {
   return (
     <div className={classes.modal}>
+
+      {/* props.children is the content passed for opening and closing cart overlay */}
       <div className={classes.content}>{props.children}</div>
     </div>
   );
@@ -20,11 +22,17 @@ const portalElement = document.getElementById("overlays");
 const Modal = (props) => {
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
+
+      {/* Creating portal */}
+      {ReactDOM.createPortal(<Backdrop 
+      onClose={props.onClose} 
+      />, portalElement)}
+
       {ReactDOM.createPortal(
         <ModalOverLay>{props.children}</ModalOverLay>,
         portalElement
       )}
+
     </Fragment>
   );
 };

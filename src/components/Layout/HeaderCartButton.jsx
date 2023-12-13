@@ -8,6 +8,8 @@ const HeaderCartButton = (props) => {
 
   const cartCtx =  useContext(CartContext);
 
+  // reduce allows us to transform an array of data into a single value.
+  //first value a function which will be called for you , second value is a starting value.
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
   }, 0);
